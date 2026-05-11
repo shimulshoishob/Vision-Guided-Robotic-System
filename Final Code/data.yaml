@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 16
+names: ['Bitter_Gourd_Damaged', 'Bitter_Gourd_Fresh', 'Cucumber_Damaged', 'Cucumber_Fresh', 'Eggplant_Damaged', 'Eggplant_Fresh', 'Lemon_Damaged', 'Lemon_Fresh', 'Onion_Damaged', 'Onion_Fresh', 'Pointed_Gourd_Damaged', 'Pointed_Gourd_Fresh', 'Potato_Damaged', 'Potato_Fresh', 'Tomato_Damaged', 'Tomato_Fresh']
+
+roboflow:
+  workspace: sanjana-kazi-supti-ymhu2
+  project: non-seasonal-vegetable-detection-yms0u
+  version: 3
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/sanjana-kazi-supti-ymhu2/non-seasonal-vegetable-detection-yms0u/dataset/3
