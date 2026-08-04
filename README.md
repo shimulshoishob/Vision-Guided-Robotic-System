@@ -202,7 +202,9 @@ The dataset consists of annotated images of eight vegetable categories collected
 
 | Attribute | Description |
 |:----------|:------------|
-| Number of Classes | 8 |
+| Vegetable Categories | 8 |
+| Quality Labels | Fresh, Damaged |
+| Total Quality States | 2 |
 | Annotation Format | YOLO |
 | Image Resolution | 640 × 640 |
 | Annotation Tool | Roboflow |
