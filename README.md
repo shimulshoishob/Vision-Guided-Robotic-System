@@ -358,16 +358,15 @@ Contributions, suggestions, and improvements are welcome.
 If you identify bugs or have ideas for improving the project, please open an **Issue** or submit a **Pull Request**.
 
 ---
-
 ## 📄 License
 
-This project is licensed under the **MIT License**.
+This repository is licensed under the **MIT License**.
 
-The source code is made publicly available to support research, education, and reproducible development in computer vision and robotic manipulation.
+The repository includes research code, Jupyter notebooks, trained model weights, configuration files, and supporting documentation developed as part of an academic research project.
 
-If you use this repository in your research or build upon this work, please provide appropriate attribution to the authors.
+The **Non-Seasonal Vegetable Detection Dataset** is distributed separately under the **Creative Commons Attribution 4.0 International (CC BY 4.0)** License.
 
-For complete licensing terms, see the [LICENSE](LICENSE) file.
+See the [LICENSE](LICENSE) file for the complete terms governing the source code and implementation materials.
 
 ⭐ If you found this project useful, please consider giving the repository a star.
 
