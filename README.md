@@ -93,22 +93,22 @@ The proposed framework combines computer vision and robotic manipulation into a 
 
 ## 🎥 Project Demonstration
 
-A complete demonstration of the robotic sorting system is available below.
+A complete demonstration of the vision-guided robotic sorting system is available below.
 
 <div align="center">
 
-[![Watch Demo](https://img.shields.io/badge/▶️-Watch%20Project%20Demo-red?style=for-the-badge)](https://youtu.be/YOUR_VIDEO_LINK)
+[![Watch Demo](https://img.shields.io/badge/▶️-Watch%20Project%20Demo-blue?style=for-the-badge)]([https://drive.google.com/file/d/YOUR_FILE_ID/view](https://drive.google.com/file/d/1YZWRKNW26gafVP3ZuEG97BOjcmkPyqSK/view?usp=sharing))
 
 </div>
 
 The demonstration showcases:
 
 - Real-time vegetable detection
-- Dynamic workspace calibration using ArUCo markers
+- ArUCo marker-based workspace calibration
 - Image-to-world coordinate transformation
 - Inverse kinematics-based robotic manipulation
 - Dynamic pick-and-place
-- ByteTrack-based pick validation
+- ByteTrack-based trajectory validation
 - Automated vegetable sorting
 
 
@@ -194,16 +194,20 @@ The SSL models are pre-trained to learn robust visual representations before fin
 
 ## 🥕 Dataset
 
-The dataset consists of annotated images of **eight vegetable categories** collected from publicly available sources and manually annotated using **Roboflow** in YOLO format.
+The dataset used in this project was **collected, curated, cleaned, and manually annotated** by the research team as part of an academic research project conducted under the **Department of Computer Science & Engineering, East West University, Dhaka, Bangladesh**.
+
+The dataset consists of annotated images of eight vegetable categories collected from multiple publicly available sources and manually annotated using **Roboflow** in YOLO format. All annotations were reviewed and verified by the research team to ensure consistency and suitability for robotic object detection.
 
 ### Dataset Information
 
 | Attribute | Description |
 |:----------|:------------|
-| Classes | 8 |
+| Number of Classes | 8 |
 | Annotation Format | YOLO |
 | Image Resolution | 640 × 640 |
 | Annotation Tool | Roboflow |
+| Developed By | Vision Intelligence and Robotics Research Team |
+| Affiliation | Department of Computer Science & Engineering, East West University |
 
 ### Vegetable Categories
 
@@ -218,12 +222,15 @@ The dataset consists of annotated images of **eight vegetable categories** colle
 
 ### Dataset Source
 
-The dataset used in this project is publicly available on **Roboflow Universe**.
+The complete annotated dataset is publicly available through **Roboflow Universe**.
 
-🔗 **Dataset Link**  
+🔗 **Dataset Link**
+
 https://universe.roboflow.com/sanjana-kazi-supti-ymhu2/non-seasonal-vegetable-detection-yms0u
 
-The dataset configuration used for training is provided in the `data.yaml` file.
+The dataset configuration used during training is provided through the `data.yaml` file.
+
+> **Note:** This dataset was developed by the Vision Intelligence and Robotics Research Team as part of an academic research project at East West University. If you use this dataset in your research, please acknowledge the authors and cite the associated publication when available.
 
 ---
 
@@ -322,14 +329,23 @@ Before execution, ensure that:
 
 ## 👥 Research Team
 
-This project was developed by the **Vision Intelligence and Robotics Research Team** as an academic capstone research project under the **Department of Computer Science & Engineering, East West University, Dhaka, Bangladesh**.
+This project was conducted by the **Vision Intelligence and Robotics Research Team** under the **Department of Computer Science & Engineering, East West University, Dhaka, Bangladesh**.
 
-| Team Member | Role |
-|:------------|:-----|
-| **Fathhur Rahaman Sams** | Computer Vision, Robotic Manipulation & Deep Learning |
-| **Sanjana Kazi Supti** | Dataset Development, Model Training & Evaluation |
-| **Md. Junaeid Ali** | System Development & Experimental Validation |
-| **Mahfuj Alam Imon** | Software Development & Testing |
+### Team Members
+
+- **Fathhur Rahaman Sams**
+- **Sanjana Kazi Supti**
+- **Md. Junaeid Ali**
+- **Mahfuj Alam Imon**
+
+The team was responsible for:
+
+- Dataset collection and curation
+- Data annotation and quality verification
+- Model development and evaluation
+- Vision-guided robotic manipulation
+- Experimental validation
+- System integration and deployment
 
 ---
 
@@ -343,9 +359,17 @@ If you identify bugs or have ideas for improving the project, please open an **I
 
 ## 📄 License
 
-This repository is intended for **academic, educational, and research purposes**.
+This project is licensed under the **MIT License**.
 
-Please provide appropriate attribution if you use this repository or build upon its implementation.
+The source code is made publicly available to support research, education, and reproducible development in computer vision and robotic manipulation.
+
+If you use this repository in your research or build upon this work, please provide appropriate attribution to the authors.
+
+For complete licensing terms, see the [LICENSE](LICENSE) file.
+
+⭐ If you found this project useful, please consider giving the repository a star.
+
+</p>
 
 ---
 
@@ -359,6 +383,6 @@ We also acknowledge the open-source communities behind **Ultralytics YOLO**, **O
 
 <p align="center">
 
-⭐ If you found this project useful, please consider giving the repository a star.
+---
 
-</p>
+
