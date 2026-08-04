@@ -2,7 +2,7 @@
 
 <p align="center">
 
-🎓 Department of Computer Science & Engineering  
+🎓 **Department of Computer Science & Engineering**  
 **East West University, Dhaka, Bangladesh**
 
 </p>
@@ -13,31 +13,44 @@
 ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch)
 ![YOLO](https://img.shields.io/badge/YOLO-v12-green?style=flat-square)
 ![OpenCV](https://img.shields.io/badge/OpenCV-Computer%20Vision-red?style=flat-square&logo=opencv)
-![ByteTrack](https://img.shields.io/badge/ByteTrack-Tracking-success?style=flat-square)
-![ArUCo](https://img.shields.io/badge/ArUCo-Calibration-blue?style=flat-square)
+![ByteTrack](https://img.shields.io/badge/ByteTrack-Multi--Object%20Tracking-success?style=flat-square)
+![ArUCo](https://img.shields.io/badge/ArUCo-Workspace%20Calibration-blue?style=flat-square)
 
 </p>
 
+---
+
 ## 📌 Overview
 
-This project presents a **vision-guided robotic system** for **automated vegetable sorting** by integrating **Computer Vision**, **Deep Learning**, and **Robotic Manipulation**.
+This repository presents a **Vision-Guided Robotic System for Automated Vegetable Sorting**, developed as an academic research project at **East West University**.
 
-Unlike conventional pick-and-place systems that rely on predefined object positions, this framework performs **dynamic object picking** within a calibrated workspace. The system detects vegetables using YOLO, estimates object locations from bounding box centers, transforms image coordinates into robot workspace coordinates using **ArUCo marker calibration**, computes robotic arm movement through **Inverse Kinematics (IK)**, and validates successful picks using **ByteTrack-based trajectory tracking** without requiring additional grasping sensors.
+The proposed framework integrates **Computer Vision**, **Deep Learning**, and **Robotic Manipulation** to automatically detect, localize, and sort vegetables in real time. Unlike conventional robotic sorting systems that depend on predefined object locations, this work introduces a **dynamic vision-guided picking strategy** capable of manipulating objects located anywhere inside a calibrated workspace.
 
-The repository also includes a comparative study of baseline YOLO models and Self-Supervised Learning (SSL) approaches (BYOL, DINO, and MAE) for robust feature learning and object detection.
+The complete pipeline combines:
+
+- 🟢 YOLO-based real-time vegetable detection
+- 🟢 ArUCo marker-based workspace calibration
+- 🟢 Image-to-world coordinate transformation
+- 🟢 Inverse Kinematics (IK) for robotic arm control
+- 🟢 ByteTrack-based trajectory validation for sensorless grasp verification
+
+Additionally, this repository contains a comparative study of baseline YOLO models and Self-Supervised Learning (SSL) approaches (**BYOL, DINO, and MAE**) for improving feature representation and object detection performance.
 
 ---
 
 ## 🎯 Key Features
 
-- Real-time vegetable detection using YOLO
+- Real-time vegetable detection using Ultralytics YOLO
 - Dynamic pick-and-place within a calibrated workspace
 - ArUCo marker-based workspace calibration
 - Image-to-world coordinate transformation
-- Inverse Kinematics for robotic arm control
+- Inverse Kinematics for robotic arm manipulation
 - ByteTrack-based vision-only pick validation
-- Baseline YOLO and SSL (BYOL, DINO, MAE) comparison
-- Complete research implementation with deployment code
+- Comparative evaluation of YOLOv10, YOLOv11 and YOLOv12
+- Self-Supervised Learning using BYOL, DINO and MAE
+- Complete research implementation from training to deployment
+
+---
 
 ---
 
@@ -53,35 +66,40 @@ YOLO Object Detection
 Bounding Box Center Extraction
       │
       ▼
-ArUCo Workspace Calibration
+ArUCo Marker Detection & Workspace Calibration
       │
       ▼
-Image → Robot Coordinate Transformation
+Image-to-World Coordinate Transformation
       │
       ▼
-Inverse Kinematics
+Inverse Kinematics (IK)
       │
       ▼
-Dynamic Pick & Place
+Robotic Arm Motion Planning
+      │
+      ▼
+Dynamic Pick-and-Place
       │
       ▼
 ByteTrack Trajectory Validation
       │
       ▼
-Category-wise Vegetable Sorting
+Automated Vegetable Sorting
 ```
 
----
+The proposed framework combines computer vision and robotic manipulation into a unified pipeline, enabling autonomous vegetable detection, localization, manipulation, and category-wise sorting within a calibrated workspace.
 
 ---
 
-## 🎥 System Demonstration
+## 🎥 Project Demonstration
 
-A complete demonstration of the vision-guided robotic sorting system can be viewed here:
+A complete demonstration of the robotic sorting system is available below.
 
-🎬 **Project Demonstration**
+<div align="center">
 
-https://youtu.be/YOUR_VIDEO_LINK
+[![Watch Demo](https://img.shields.io/badge/▶️-Watch%20Project%20Demo-red?style=for-the-badge)](https://youtu.be/YOUR_VIDEO_LINK)
+
+</div>
 
 The demonstration showcases:
 
@@ -94,37 +112,41 @@ The demonstration showcases:
 - Automated vegetable sorting
 
 
+---
 
 ## 💡 Dynamic Picking Strategy
 
-Unlike conventional robotic sorting systems that rely on predefined pick locations, this framework performs **dynamic object picking** within a calibrated workspace.
+Unlike traditional robotic pick-and-place systems that operate using predefined object coordinates, the proposed framework performs **dynamic object picking** within a calibrated workspace.
 
-The complete manipulation process consists of:
+The manipulation process follows these steps:
 
-1. Detect vegetables using a trained YOLO model.
-2. Extract the center point of the detected bounding box.
-3. Calibrate the workspace using **ArUCo markers**.
-4. Transform image coordinates into robot workspace coordinates.
-5. Compute robotic joint angles using **Inverse Kinematics (IK)**.
-6. Execute the pick-and-place operation.
-7. Verify successful picking using **ByteTrack-based trajectory tracking**.
+1. Detect vegetables using the trained YOLO model.
+2. Extract the center coordinates of each detected bounding box.
+3. Establish the robot workspace using **ArUCo marker calibration**.
+4. Convert image coordinates into real-world robot coordinates.
+5. Compute joint angles using **Inverse Kinematics (IK)**.
+6. Execute the robotic pick-and-place operation.
+7. Validate the manipulation using **ByteTrack trajectory tracking**.
 
-This enables the robotic arm to pick vegetables from **any position inside the workspace** rather than fixed predefined locations.
+This enables the robotic arm to accurately grasp vegetables positioned anywhere inside the calibrated workspace without requiring predefined pick locations.
 
 ---
 
-## 🔍 Sensorless Pick Validation
+## 🔍 Vision-Based Pick Validation
 
-The robotic arm does not include force, tactile, or proximity sensors to confirm successful grasping.
+The robotic arm used in this project does not include force, tactile, or proximity sensors for grasp verification.
 
-To address this limitation, the system employs **ByteTrack** as a vision-based validation mechanism. After the robotic arm initiates a grasp, ByteTrack continuously tracks the detected vegetable across consecutive frames. If the object's trajectory follows the expected robotic motion, the pick is considered successful.
+To overcome this limitation, the framework employs **ByteTrack** as a vision-based validation mechanism. After the robotic arm attempts a grasp, ByteTrack continuously tracks the detected object across consecutive frames. A successful pick is confirmed when the object's trajectory consistently follows the expected robotic arm motion.
 
-This approach provides:
+### Advantages
 
-- Vision-only grasp verification
-- Reduced hardware complexity
+- Sensorless grasp verification
 - Low-cost deployment
-- Robust trajectory-based pick validation
+- Reduced hardware complexity
+- Robust trajectory-based validation
+- Continuous visual feedback during manipulation
+
+---
 
 ---
 
@@ -150,40 +172,40 @@ Vision-Guided-Robotic-System
 │
 ├── 📁 Trial and Error Codes
 │
-├── 📄 Research Paper
-├── 📊 Poster
-└── 📽 Presentation
+└── README.md
 ```
+
+The repository contains the complete implementation pipeline, including model development, experimentation, and robotic deployment.
 
 ---
 
-## 🧠 Deep Learning Models
+## 🤖 Deep Learning Models
 
-This project evaluates both baseline object detection models and Self-Supervised Learning (SSL) enhanced architectures.
+This project investigates both baseline object detection models and Self-Supervised Learning (SSL) techniques to improve feature representation for robotic perception.
 
 | Category | Models |
-|----------|--------|
-| Baseline Detection | YOLOv10, YOLOv11, YOLOv12 |
-| Self-Supervised Learning | BYOL, DINO, MAE |
+|:---------|:-------|
+| **Baseline Detection** | YOLOv10, YOLOv11, YOLOv12 |
+| **Self-Supervised Learning** | BYOL, DINO, MAE |
 
-The SSL models are used for feature learning before fine-tuning the detection model, enabling a comparative analysis of representation learning for robotic vision.
+The SSL models are pre-trained to learn robust visual representations before fine-tuning the object detector, enabling a comparative evaluation under the same experimental settings.
 
 ---
 
 ## 🥕 Dataset
 
-The dataset consists of annotated images of eight vegetable categories collected from multiple publicly available sources and curated for robotic object detection. All images were manually verified, cleaned, and annotated in **YOLO format** using **Roboflow**.
+The dataset consists of annotated images of **eight vegetable categories** collected from publicly available sources and manually annotated using **Roboflow** in YOLO format.
 
-### Dataset Statistics
+### Dataset Information
 
-| Attribute | Details |
-|-----------|---------|
-| Total Classes | 8 |
+| Attribute | Description |
+|:----------|:------------|
+| Classes | 8 |
 | Annotation Format | YOLO |
 | Image Resolution | 640 × 640 |
 | Annotation Tool | Roboflow |
 
-### Vegetable Classes
+### Vegetable Categories
 
 - 🍅 Tomato
 - 🥔 Potato
@@ -196,40 +218,147 @@ The dataset consists of annotated images of eight vegetable categories collected
 
 ### Dataset Source
 
-The complete annotated dataset is publicly available on Roboflow:
+The dataset used in this project is publicly available on **Roboflow Universe**.
 
-**🔗 Roboflow Dataset:**  
+🔗 **Dataset Link**  
 https://universe.roboflow.com/sanjana-kazi-supti-ymhu2/non-seasonal-vegetable-detection-yms0u
 
-Dataset configuration and annotations are provided through the `data.yaml` file.
+The dataset configuration used for training is provided in the `data.yaml` file.
 
 ---
 
 ## ⚙️ Technology Stack
 
 | Category | Technologies |
-|----------|--------------|
-| Programming | Python |
-| Deep Learning | PyTorch, Ultralytics YOLO |
-| Computer Vision | OpenCV, ArUCo |
-| Object Tracking | ByteTrack |
-| Robotics | Hiwonder xArm, Inverse Kinematics |
-| Dataset | Roboflow |
-| Development | Jupyter Notebook, Google Colab |
+|:---------|:-------------|
+| Programming Language | Python |
+| Deep Learning Framework | PyTorch |
+| Object Detection | Ultralytics YOLO |
+| Computer Vision | OpenCV |
+| Workspace Calibration | ArUCo Markers |
+| Multi-Object Tracking | ByteTrack |
+| Robotics Platform | Hiwonder xArm 1S |
+| Motion Planning | Inverse Kinematics |
+| Dataset Management | Roboflow |
+| Development Environment | Jupyter Notebook, Google Colab |
 
 ---
 
-## 👨‍💻 Research Team
+## 📦 Repository Contents
 
-This project was developed by the **Vision Intelligence and Robotics Research Team**, Department of Computer Science & Engineering, **East West University**, Dhaka, Bangladesh.
+This repository includes the complete implementation of the proposed vision-guided robotic sorting framework.
 
-### Team Members
+| Component | Description |
+|:----------|:------------|
+| 💻 Final Code | Complete robotic arm automation and deployment pipeline |
+| 🤖 Trained Model | Pre-trained YOLO detection model (`best.pt`) |
+| ⚙️ Configuration | Dataset configuration file (`data.yaml`) |
+| 📚 Baseline Models | YOLOv10, YOLOv11, and YOLOv12 training notebooks |
+| 🧠 SSL Models | BYOL, DINO, and MAE implementation notebooks |
+| 🧪 Experimental Codes | Trial-and-error implementations used during system development |
 
-- **Fathhur Rahaman Sams**
-- **Sanjana Kazi Supti**
-- **Md. Junaeid Ali**
-- **Mahfuj Alam Imon**
+The repository provides a complete workflow from model training and evaluation to real-time robotic deployment for automated vegetable sorting.
 
-This repository is an official academic research project conducted under the supervision and authorization of the **Department of Computer Science & Engineering, East West University**.
+---
 
-For academic collaboration or research inquiries, please contact the respective project authors.
+---
+
+## 🚀 Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/Shams200648/Vision-Guided-Robotic-System.git
+cd Vision-Guided-Robotic-System
+```
+
+Create a virtual environment (recommended):
+
+```bash
+python -m venv venv
+```
+
+Activate the environment.
+
+**Windows**
+
+```bash
+venv\Scripts\activate
+```
+
+**Linux/macOS**
+
+```bash
+source venv/bin/activate
+```
+
+Install the required dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+> **Note:** If `requirements.txt` is unavailable, install the required libraries manually according to your development environment.
+
+---
+
+## ▶️ Usage
+
+Run the final robotic automation pipeline:
+
+```bash
+python "Final Code/Robotic_Arm_Automation_Code_Final_CAPSTONE_C.py"
+```
+
+Before execution, ensure that:
+
+- ✅ The robotic arm is properly connected.
+- ✅ The camera is initialized and functioning.
+- ✅ ArUCo markers are correctly positioned within the workspace.
+- ✅ The trained YOLO model (`best.pt`) is available.
+- ✅ The serial communication port is configured correctly.
+
+---
+
+## 👥 Research Team
+
+This project was developed by the **Vision Intelligence and Robotics Research Team** as an academic capstone research project under the **Department of Computer Science & Engineering, East West University, Dhaka, Bangladesh**.
+
+| Team Member | Role |
+|:------------|:-----|
+| **Fathhur Rahaman Sams** | Computer Vision, Robotic Manipulation & Deep Learning |
+| **Sanjana Kazi Supti** | Dataset Development, Model Training & Evaluation |
+| **Md. Junaeid Ali** | System Development & Experimental Validation |
+| **Mahfuj Alam Imon** | Software Development & Testing |
+
+---
+
+## 🤝 Contributing
+
+Contributions, suggestions, and improvements are welcome.
+
+If you identify bugs or have ideas for improving the project, please open an **Issue** or submit a **Pull Request**.
+
+---
+
+## 📄 License
+
+This repository is intended for **academic, educational, and research purposes**.
+
+Please provide appropriate attribution if you use this repository or build upon its implementation.
+
+---
+
+## 🙏 Acknowledgements
+
+The authors gratefully acknowledge the support of the **Department of Computer Science & Engineering, East West University**, for providing the academic environment and resources that facilitated this research.
+
+We also acknowledge the open-source communities behind **Ultralytics YOLO**, **OpenCV**, **PyTorch**, **ByteTrack**, **Roboflow**, and **Google Colab**, whose tools and resources contributed significantly to this work.
+
+---
+
+<p align="center">
+
+⭐ If you found this project useful, please consider giving the repository a star.
+
+</p>
