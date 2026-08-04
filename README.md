@@ -2,6 +2,13 @@
 
 <p align="center">
 
+🎓 Department of Computer Science & Engineering  
+**East West University, Dhaka, Bangladesh**
+
+</p>
+
+<p align="center">
+
 ![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=flat-square&logo=python)
 ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch)
 ![YOLO](https://img.shields.io/badge/YOLO-v12-green?style=flat-square)
@@ -65,6 +72,28 @@ Category-wise Vegetable Sorting
 ```
 
 ---
+
+---
+
+## 🎥 System Demonstration
+
+A complete demonstration of the vision-guided robotic sorting system can be viewed here:
+
+🎬 **Project Demonstration**
+
+https://youtu.be/YOUR_VIDEO_LINK
+
+The demonstration showcases:
+
+- Real-time vegetable detection
+- Dynamic workspace calibration using ArUCo markers
+- Image-to-world coordinate transformation
+- Inverse kinematics-based robotic manipulation
+- Dynamic pick-and-place
+- ByteTrack-based pick validation
+- Automated vegetable sorting
+
+
 
 ## 💡 Dynamic Picking Strategy
 
@@ -143,9 +172,18 @@ The SSL models are used for feature learning before fine-tuning the detection mo
 
 ## 🥕 Dataset
 
-The dataset contains annotated images of multiple vegetable categories collected for object detection and robotic sorting.
+The dataset consists of annotated images of eight vegetable categories collected from multiple publicly available sources and curated for robotic object detection. All images were manually verified, cleaned, and annotated in **YOLO format** using **Roboflow**.
 
-**Classes**
+### Dataset Statistics
+
+| Attribute | Details |
+|-----------|---------|
+| Total Classes | 8 |
+| Annotation Format | YOLO |
+| Image Resolution | 640 × 640 |
+| Annotation Tool | Roboflow |
+
+### Vegetable Classes
 
 - 🍅 Tomato
 - 🥔 Potato
@@ -155,6 +193,13 @@ The dataset contains annotated images of multiple vegetable categories collected
 - 🥒 Cucumber
 - 🥒 Bitter Gourd
 - 🥒 Pointed Gourd
+
+### Dataset Source
+
+The complete annotated dataset is publicly available on Roboflow:
+
+**🔗 Roboflow Dataset:**  
+https://universe.roboflow.com/sanjana-kazi-supti-ymhu2/non-seasonal-vegetable-detection-yms0u
 
 Dataset configuration and annotations are provided through the `data.yaml` file.
 
@@ -171,3 +216,20 @@ Dataset configuration and annotations are provided through the `data.yaml` file.
 | Robotics | Hiwonder xArm, Inverse Kinematics |
 | Dataset | Roboflow |
 | Development | Jupyter Notebook, Google Colab |
+
+---
+
+## 👨‍💻 Research Team
+
+This project was developed by the **Vision Intelligence and Robotics Research Team**, Department of Computer Science & Engineering, **East West University**, Dhaka, Bangladesh.
+
+### Team Members
+
+- **Fathhur Rahaman Sams**
+- **Sanjana Kazi Supti**
+- **Md. Junaeid Ali**
+- **Mahfuj Alam Imon**
+
+This repository is an official academic research project conducted under the supervision and authorization of the **Department of Computer Science & Engineering, East West University**.
+
+For academic collaboration or research inquiries, please contact the respective project authors.
