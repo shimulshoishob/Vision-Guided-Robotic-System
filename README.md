@@ -97,7 +97,7 @@ A complete demonstration of the vision-guided robotic sorting system is availabl
 
 <div align="center">
 
-[![Watch Demo](https://img.shields.io/badge/▶️-Watch%20Project%20Demo-blue?style=for-the-badge)]([https://drive.google.com/file/d/YOUR_FILE_ID/view](https://drive.google.com/file/d/1YZWRKNW26gafVP3ZuEG97BOjcmkPyqSK/view?usp=sharing))
+[![Watch Demo](https://img.shields.io/badge/▶️-Watch%20Project%20Demo-blue?style=for-the-badge)](https://drive.google.com/file/d/1YZWRKNW26gafVP3ZuEG97BOjcmkPyqSK/view?usp=drive_link)
 
 </div>
 
