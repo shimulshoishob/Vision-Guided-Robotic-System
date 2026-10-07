@@ -6,9 +6,11 @@ from threading import Thread, Lock
 from ultralytics import YOLO
 from ultralytics.utils.plotting import colors
 import yaml
+import os
 
-MODEL_PATH = "D:/EWU/10th Semester/CSE475/LABS/best.pt"
-YAML_PATH  = "D:/EWU/10th Semester/CSE475/LABS/data.yaml"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, "best.pt")
+YAML_PATH  = os.path.join(BASE_DIR, "data.yaml")
 
 model = YOLO(MODEL_PATH)
 
@@ -143,7 +145,8 @@ def reverse_if_out_of_bounds(home, offset):
 
 HOME = {2:500, 4:820, 5:700, 6:500}
 MOVE_TIME = 1200
-CAMERA_INDEX = 1
+# Iriun Webcam (phone) shows up as a normal camera on macOS; override with: CAMERA_INDEX=2 python ...
+CAMERA_INDEX = int(os.environ.get("CAMERA_INDEX", 1))
 
 WORK_W = 28
 WORK_H = 14
@@ -440,7 +443,10 @@ def place_object(label_id):
 # =========================================================
 
 aruco_dict = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_4X4_50)
-cap = cv2.VideoCapture(CAMERA_INDEX)
+cap = cv2.VideoCapture(CAMERA_INDEX, cv2.CAP_AVFOUNDATION)
+if not cap.isOpened():
+    raise SystemExit(f"Camera index {CAMERA_INDEX} failed to open. Check macOS camera permission, "
+                     "that Iriun is running on phone + Mac, or try CAMERA_INDEX=0/2.")
 
 workspace_rect = None
 workspace_locked = False
@@ -524,11 +530,18 @@ def execute_pick(label_id, cx, cy, w, h, my_task_id):
     # =========================
     # 🔥 SINGLE SAFE HEIGHT CONTROL (ONLY ONE Z CONTROL)
     # =========================
-    current_elbow = robot.getPosition(4)
+    # macOS HID reads can fail intermittently while the arm is still moving -> retry, then skip
+    current_elbow = None
+    for _ in range(5):
+        try:
+            current_elbow = robot.getPosition(4)
+            break
+        except OSError:
+            time.sleep(0.1)
 
     SAFE_MIN_PICK = 620   # tune if needed
 
-    if current_elbow < SAFE_MIN_PICK:
+    if current_elbow is not None and current_elbow < SAFE_MIN_PICK:
         print("🛡️ Adjusting height before grip")
 
         robot.setPosition(
