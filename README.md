@@ -172,6 +172,7 @@ Vision-Guided-Robotic-System
 │
 ├── 📁 Trial and Error Codes
 │
+├── requirements.txt
 └── README.md
 ```
 
@@ -306,8 +307,6 @@ Install the required dependencies:
 ```bash
 pip install -r requirements.txt
 ```
-
-> **Note:** If `requirements.txt` is unavailable, install the required libraries manually according to your development environment.
 
 ---
 
